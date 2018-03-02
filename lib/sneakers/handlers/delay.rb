@@ -105,7 +105,7 @@ module Sneakers
 
       def next_delay_period(headers)
         work_at = headers['work_at']
-        t = (work_at - Time.current.to_f).round
+        t = (work_at - Time.now.to_f).round
         # greater check is to ignore remainder of time (seconds) smaller than the last delay
         @delay_periods.bsearch{ |e| t >= e && (t / e.to_f).round > 0 } || 0
       end
